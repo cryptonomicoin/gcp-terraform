@@ -5,7 +5,7 @@ provider "google" {
 }
 
 resource "google_compute_instance" "vm_instance" {
-  name         = "flask-app-platform"
+  name         = "basic-app-machine"
   machine_type = "f1-micro"
 
   boot_disk {
