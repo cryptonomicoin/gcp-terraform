@@ -5,7 +5,7 @@ provider "google" {
 }
 
 resource "google_compute_instance" "vm_instance" {
-  name         = "basic-app-machine"
+  name         = "flask-app-platform"
   machine_type = "f1-micro"
 
   boot_disk {
@@ -25,10 +25,4 @@ resource "google_compute_instance" "vm_instance" {
 resource "google_compute_network" "vpc_network" {
   name                    = "terraform-network"
   auto_create_subnetworks = "true"
-}
-
-resource "google_storage_bucket" "open-bucket" {
-  name          = "open-bucket"
-  location      = var.region
-  project       = var.project
 }
