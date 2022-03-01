@@ -10,17 +10,7 @@ resource "google_bigquery_dataset" "public" {
   }
 
   access {
-    role          = "OWNER"
-    user_by_email = google_service_account.bqowner.email
-  }
-
-  access {
     role   = "READER"
-    domain = "nimbussec.com"
   }
 }
 
-
-resource "google_service_account" "bqowner" {
-  account_id = "bqowner"
-}
