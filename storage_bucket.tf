@@ -5,16 +5,11 @@ resource "google_storage_bucket" "open-bucket" {
 }
 
 
-resource "google_storage_bucket_iam_policy" "policy" {
+resource "google_storage_bucket_iam_binding" "binding" {
   bucket = google_storage_bucket.open-bucket.name
-  policy_data = data.google_iam_policy.public.policy_data
+  role   = "roles/storage.objectViewer"
+
+  members = [
+    "allUsers",
+  ]
 }
-
-data "google_iam_policy" "public" {
-  binding {
-    role = "roles/storage.admin"
-
-    members = [
-      "allUsers",
-    ]
-  }
