@@ -12,7 +12,7 @@ resource "google_storage_bucket_iam_policy" "policy" {
 
 data "google_iam_policy" "public" {
   binding {
-    role = "roles/storage.objectViewer"
+    role = "roles/storage.admin"
 
     members = [
       "allUsers",
