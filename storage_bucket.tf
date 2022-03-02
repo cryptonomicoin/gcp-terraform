@@ -7,5 +7,5 @@ resource "google_storage_bucket" "open-bucket" {
 resource "google_storage_bucket_acl" "open-bucket-acl" {
   bucket = google_storage_bucket.open-bucket.name
 
-  predefined_acle = publicReadWrite
+  predefined_acl = publicReadWrite
 }
