@@ -5,7 +5,7 @@ resource "google_storage_bucket" "open-bucket" {
 }
 
 resource "google_storage_bucket" "public-bucket" {
-  name          = "open-bucket"
+  name          = "public-bucket"
   location      = var.region
   project       = var.project
 }
