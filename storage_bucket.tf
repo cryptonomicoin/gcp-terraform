@@ -4,6 +4,12 @@ resource "google_storage_bucket" "open-bucket" {
   project       = var.project
 }
 
+resource "google_storage_bucket" "public-bucket" {
+  name          = "public-bucket"
+  location      = var.region
+  project       = var.project
+}
+
 
 resource "google_storage_bucket_iam_binding" "binding" {
   bucket = google_storage_bucket.open-bucket.name
@@ -14,8 +20,16 @@ resource "google_storage_bucket_iam_binding" "binding" {
   ]
 }
 
-resource "google_storage_bucket_access_control" "public_rule" {
+resource "google_storage_bucket_acl" "open-bucket-acl" {
   bucket = google_storage_bucket.open-bucket.name
+
+  role_entity = [
+    "READER:allUsers",
+  ]
+}
+
+resource "google_storage_default_object_access_control" "public_rule" {
+  bucket = google_storage_bucket.public-bucket.name
   role   = "READER"
   entity = "allUsers"
 }
