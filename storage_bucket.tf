@@ -13,3 +13,9 @@ resource "google_storage_bucket_iam_binding" "binding" {
     "allUsers",
   ]
 }
+
+resource "google_storage_bucket_access_control" "public_rule" {
+  bucket = google_storage_bucket.open-bucket.name
+  role   = "READER"
+  entity = "allUsers"
+}
