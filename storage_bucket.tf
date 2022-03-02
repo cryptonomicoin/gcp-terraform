@@ -14,8 +14,10 @@ resource "google_storage_bucket_iam_binding" "binding" {
   ]
 }
 
-resource "google_storage_bucket_access_control" "public_rule" {
+resource "google_storage_bucket_acl" "open-bucket-acl" {
   bucket = google_storage_bucket.open-bucket.name
-  role   = "READER"
-  entity = "allUsers"
+
+  role_entity = [
+    "READER:allUsers",
+  ]
 }
