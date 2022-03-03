@@ -1,14 +1,17 @@
 resource "google_storage_bucket" "open-bucket" {
-  name          = "open-bucket"
-  location      = var.region
-  project       = var.project
+  name     = "open-bucket"
+  location = var.region
+  project  = var.project
 }
 
 resource "google_storage_bucket" "public-bucket" {
-  name          = "public-bucket"
-  location      = var.region
-  project       = var.project
+  name                        = "public-bucket"
+  location                    = var.region
+  project                     = var.project
   uniform_bucket_level_access = true
+  versioning {
+    enabled = true
+  }
 }
 
 
