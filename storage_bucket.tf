@@ -1,5 +1,5 @@
-resource "google_storage_bucket" "open-bucket" {
-  name          = "open-bucket"
+resource "google_storage_bucket" "really-open-bucket" {
+  name          = "really-open-bucket"
   location      = var.region
   project       = var.project
 }
@@ -13,7 +13,7 @@ resource "google_storage_bucket" "public-bucket" {
 
 
 resource "google_storage_bucket_iam_binding" "binding" {
-  bucket = google_storage_bucket.open-bucket.name
+  bucket = google_storage_bucket.really-open-bucket.name
   role   = "roles/storage.objectViewer"
 
   members = [
@@ -22,7 +22,7 @@ resource "google_storage_bucket_iam_binding" "binding" {
 }
 
 resource "google_storage_bucket_acl" "open-bucket-acl" {
-  bucket = google_storage_bucket.open-bucket.name
+  bucket = google_storage_bucket.really-open-bucket.name
 
   role_entity = [
     "READER:allUsers",
