@@ -11,11 +11,11 @@ resource "google_storage_bucket" "public-bucket" {
   uniform_bucket_level_access = true
 }
 
-resource "google_storage_bucket" "another-public-bucket" {
+resource "google_storage_bucket" "not-another-public-bucket" {
   name          = "public-bucket"
   location      = var.region
   project       = var.project
-  uniform_bucket_level_access = false
+  uniform_bucket_level_access = true
 }
 
 resource "google_storage_bucket_iam_binding" "binding" {
