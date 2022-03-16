@@ -9,5 +9,5 @@ resource "google_storage_bucket" "public-bucket-cycse" {
   name          = "public-bucket-cycse"
   location      = var.region
   project       = var.project
-  uniform_bucket_level_access = true
+  uniform_bucket_level_access = false
 }
